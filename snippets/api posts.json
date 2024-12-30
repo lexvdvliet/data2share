@@ -1,0 +1,62 @@
+// Update workspace (Sales)
+curl --request PATCH \
+     --url https://api.webflow.com/v2/collections/66db68fe727c6c7df7bfe388/items/66db6f4ebf838f5d6ea18fc5/live \
+     --header 'accept: application/json' \
+     --header 'authorization: Bearer 978e7857e2b4e35df194e9a49e6db6d2d73672d7160c9e3145cf92a3c2e8c2a8' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "isArchived": false,
+  "isDraft": false,
+  "fieldData": {
+    "name": "Sales",
+    "slug": "sales",
+    "workspace-omschrijving": "Sales dashboards",
+    "rol": "sales",
+    "dashboards": [
+        "66d0e0f9b86d619b403b1a66",
+        "66de112332194f6e0efc11dc",
+        "66f5b53f832a05fa5056099c"
+    ]
+  }
+}
+
+// Publish workspace
+curl --request POST \
+     --url https://api.webflow.com/v2/collections/66db68fe727c6c7df7bfe388/items/publish \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "itemIds": [
+    "643fd856d66b6528195ee2ca"
+  ]
+}
+
+// Create workspace
+curl --request POST \
+     --url https://api.webflow.com/v2/collections/66db68fe727c6c7df7bfe388/items \
+     --header 'accept: application/json' \
+     --header 'authorization: Bearer 978e7857e2b4e35df194e9a49e6db6d2d73672d7160c9e3145cf92a3c2e8c2a8' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "isArchived": false,
+  "isDraft": false,
+  "fieldData": {
+    "name": "Sales",
+    "slug": "sales",
+    "workspace-omschrijving": "Sales dashboards",
+    "rol": "sales",
+    "dashboards": [
+        "66d0e0f9b86d619b403b1a66",
+        "66de112332194f6e0efc11dc",
+        "66f5b53f832a05fa5056099c"
+    ]
+  }
+}
+
+curl --request DELETE \
+     --url https://api.webflow.com/v2/collections/66db68fe727c6c7df7bfe388/items/itemid \
+     --header 'accept: application/json' \
+     --header 'authorization: Bearer 978e7857e2b4e35df194e9a49e6db6d2d73672d7160c9e3145cf92a3c2e8c2a8'

@@ -1,0 +1,60 @@
+  /* Table Styling */
+  .plan-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px; /* Set text size to 14px */
+    text-align: left;
+  }
+
+  .plan-table thead tr {
+    background-color: #aaa;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .plan-table th, .plan-table td {
+    border: 1px solid #cccccc; /* Light gray border */
+    padding: 12px 15px;
+  }
+
+  .plan-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .plan-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+
+  .plan-table tbody tr:last-of-type {
+    border-bottom: 2px solid #aaaaaa; /* Slightly darker bottom border */
+  }
+
+  .request-plan {
+    padding: 8px 16px;
+    background-color: #78ace1;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+
+  .request-plan:hover {
+    background-color: #3573b2;
+  }
+  
+  .plan-table button {
+  width: 150px; /* Set a fixed width for buttons */
+  padding: 10px; /* Optional: Adjust padding for better appearance */
+  border: none; /* Optional: Remove border for a cleaner look */
+  border-radius: 4px; /* Optional: Add rounded corners */
+  cursor: pointer; /* Show pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effects */
+}
+
+.plan-table button:disabled {
+  background-color: grey; /* Set background color for disabled buttons */
+  color: white; /* Set text color for disabled buttons */
+  cursor: not-allowed; /* Show not-allowed cursor for disabled buttons */
+}

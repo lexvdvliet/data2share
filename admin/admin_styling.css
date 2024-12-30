@@ -1,0 +1,130 @@
+/* Spinner Styling */
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.active-button {
+  background-color: #bfdfff;
+  color: #3573b2;
+}
+
+/* table styling */
+.admin-table, .members-table {
+  width: 100%;
+  table-layout: auto; 
+  border-spacing: 0; /* No extra spacing between cells */
+  /* border-radius: 10px; /* Rounded outer corners */
+  /* overflow: hidden; /* Ensures content respects the rounded corners */
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Header row styling */
+.admin-table thead tr, .members-table thead tr {
+  background-color: #818181;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Cell padding and borders for each cell */
+.admin-table th, .admin-table td,
+.members-table th, .members-table td {
+  border: 1px solid #cccccc; /* Visible border color */
+  padding: 12px 15px;
+}
+
+/* Alternating row colors */
+.admin-table tbody tr:nth-of-type(even),
+.members-table tbody tr:nth-of-type(even) {
+  background-color: #aaa; /* Light gray for even rows */
+}
+
+.admin-table tbody tr:nth-of-type(odd),
+.members-table tbody tr:nth-of-type(odd) {
+  background-color: white; /* White for odd rows */
+}
+
+/* Last row border for styling consistency */
+.admin-table tbody tr:last-of-type,
+.members-table tbody tr:last-of-type {
+  border-bottom: 2px solid #aaaaaa; /* Darker border for the last row */
+}
+
+/* Specific column width and centering for certain columns */
+.admin-table th:nth-child(3), .admin-table td:nth-child(3),
+.members-table th:nth-child(3), .members-table td:nth-child(3) {
+  width: 60px;
+  text-align: center;
+}
+
+/* Button styling */
+.admin-table button {
+  width: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.members-table button {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-table button:disabled, .members-table button:disabled {
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
+}
+
+/* Modal Styling */
+#success-modal, #failure-modal, #member-success-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #000;
+  text-decoration: none;
+}

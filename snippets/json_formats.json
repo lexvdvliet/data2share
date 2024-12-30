@@ -1,0 +1,286 @@
+// first webhook data
+{
+    "id": "66db6f4ebf838f5d6ea18fc5",
+    "cmsLocaleId": "66159f642552318f6d171c39",
+    "lastPublished": "2024-10-01T19:19:58.944Z",
+    "lastUpdated": "2024-10-01T19:00:34.123Z",
+    "createdOn": "2024-09-06T21:08:30.232Z",
+    "isArchived": false,
+    "isDraft": false,
+    "fieldData": {
+        "workspace-omschrijving": "Sales dashboards",
+        "name": "Sales",
+        "workspace-image": {
+            "fileId": "66db6f3c7d1e057ba3d26f46",
+            "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66db6f3c7d1e057ba3d26f46_audi%20rs6.jpg",
+            "alt": null
+        },
+        "slug": "sales",
+        "dashboards": [
+            "66d0e0f9b86d619b403b1a66",
+            "66de112332194f6e0efc11dc",
+            "66f5b53f832a05fa5056099c"
+        ],
+        "rol": "sales"
+    }
+}
+
+// second webhook data
+
+{
+    "id": "66f651b16435dbdf8bbaf65d",
+    "cmsLocaleId": "66159f642552318f6d171c39",
+    "lastPublished": "2024-09-27T11:53:41.107Z",
+    "lastUpdated": "2024-09-27T06:34:36.183Z",
+    "createdOn": "2024-09-27T06:33:21.656Z",
+    "isArchived": false,
+    "isDraft": false,
+    "fieldData": {
+        "public-link": "https://app.powerbi.com/reportEmbed?reportId=017738be-b1e6-4fe9-9d78-d24d76268beb&autoAuth=true&ctid=4c136fc1-3219-42a5-b8f0-d4a2c900af41",
+        "dashboard-omschrijving": "Het user authentication dashboard maar dan niet openbaar",
+        "name": "User authentication gated",
+        "slug": "bedrijfsvoering-user-authentication-gated",
+        "dashboard-image": {
+            "fileId": "66ec89e31bb43fbbbe831d8f",
+            "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66ec89e31bb43fbbbe831d8f_insurance.png",
+            "alt": null
+        },
+        "workspace-4": "66db6995727c6c7df7c05eca"
+    }
+}
+
+{
+    "0": {
+        "id": "66f651b16435dbdf8bbaf65d",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-27T11:53:41.107Z",
+        "lastUpdated": "2024-09-27T06:34:36.183Z",
+        "createdOn": "2024-09-27T06:33:21.656Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/reportEmbed?reportId=017738be-b1e6-4fe9-9d78-d24d76268beb&autoAuth=true&ctid=4c136fc1-3219-42a5-b8f0-d4a2c900af41",
+            "dashboard-omschrijving": "Het user authentication dashboard maar dan niet openbaar",
+            "name": "User authentication gated",
+            "slug": "bedrijfsvoering-user-authentication-gated",
+            "dashboard-image": {
+                "fileId": "66ec89e31bb43fbbbe831d8f",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66ec89e31bb43fbbbe831d8f_insurance.png",
+                "alt": null
+            },
+            "workspace-4": "66db6995727c6c7df7c05eca"
+        }
+    },
+    "1": {
+        "id": "66f5b53f832a05fa5056099c",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-26T19:26:07.269Z",
+        "lastUpdated": "2024-09-26T19:25:51.562Z",
+        "createdOn": "2024-09-26T19:25:51.562Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/reportEmbed?reportId=6e3068a8-bc36-4059-b9e3-3676e16c34dc&autoAuth=true&ctid=4c136fc1-3219-42a5-b8f0-d4a2c900af41",
+            "dashboard-omschrijving": "Dit is het sales dashboard maar dan niet openbaar",
+            "name": "Sales gated",
+            "slug": "sales-gated",
+            "dashboard-image": {
+                "fileId": "66e0a0f2c37b695303ee8657",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66e0a0f2c37b695303ee8657_analysis%20(2).png",
+                "alt": null
+            },
+            "workspace-4": "66db6f4ebf838f5d6ea18fc5"
+        }
+    },
+    "2": {
+        "id": "66f5b3df7b3f17b5a0d7c5b9",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-26T19:21:33.760Z",
+        "lastUpdated": "2024-09-26T19:19:59.156Z",
+        "createdOn": "2024-09-26T19:19:59.156Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/reportEmbed?reportId=3ba3ce0a-6cea-40fa-82cf-a6239dad7fde&autoAuth=true&ctid=4c136fc1-3219-42a5-b8f0-d4a2c900af41",
+            "dashboard-omschrijving": "Dit dashboard is ook voor bedrijfsvoering, maar niet openbaar beschikbaar",
+            "name": "Bedrijfsvoering gated",
+            "slug": "bedrijfsvoering-gated",
+            "dashboard-image": {
+                "fileId": "66e0a0ff74edd7419188585e",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66e0a0ff74edd7419188585e_sales.png",
+                "alt": null
+            },
+            "workspace-4": "66db6995727c6c7df7c05eca"
+        }
+    },
+    "3": {
+        "id": "66f5882a3b4df729115460ca",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-27T11:53:41.107Z",
+        "lastUpdated": "2024-09-27T06:34:23.536Z",
+        "createdOn": "2024-09-26T16:13:30.953Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/reportEmbed?reportId=e630f09b-ecca-443e-abfd-752adfc3124e&autoAuth=true&ctid=422db744-0654-46b7-8aae-3e98cd3fb9c5",
+            "dashboard-omschrijving": "Luuk zn dashboard om mee te testen",
+            "name": "Luuks test dashboard",
+            "slug": "bedrijfsvoering-luuks-test-dashboard",
+            "dashboard-image": {
+                "fileId": "66e0a0ff74edd7419188585e",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66e0a0ff74edd7419188585e_sales.png",
+                "alt": null
+            },
+            "workspace-4": "66db6995727c6c7df7c05eca"
+        }
+    },
+    "4": {
+        "id": "66ec89e9e46aa5c70441ab7b",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-24T19:01:05.300Z",
+        "lastUpdated": "2024-09-24T18:58:27.838Z",
+        "createdOn": "2024-09-19T20:30:33.344Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/view?r=eyJrIjoiNDlhNDFkYzMtYjZlYi00Mzc1LWExNDItOGRjMTFmY2Q4YWZkIiwidCI6IjRjMTM2ZmMxLTMyMTktNDJhNS1iOGYwLWQ0YTJjOTAwYWY0MSIsImMiOjl9",
+            "dashboard-omschrijving": "Een dashboard om te checken met welk account je als gebruiker bent ingelogd",
+            "name": "User authentication",
+            "slug": "bedrijfsvoering-user-authentication",
+            "dashboard-image": {
+                "fileId": "66ec89e31bb43fbbbe831d8f",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66ec89e31bb43fbbbe831d8f_insurance.png",
+                "alt": null
+            },
+            "workspace-4": "66db6995727c6c7df7c05eca"
+        }
+    },
+    "5": {
+        "id": "66de1190e9fda0d767ff1dc7",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-27T11:53:41.107Z",
+        "lastUpdated": "2024-09-27T06:34:30.408Z",
+        "createdOn": "2024-09-08T21:05:20.894Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/view?r=eyJrIjoiYWZiNjNjZmEtZDhkMi00ZDA5LTg1OTYtMWU0MzRlYzRlOGI4IiwidCI6IjRjMTM2ZmMxLTMyMTktNDJhNS1iOGYwLWQ0YTJjOTAwYWY0MSIsImMiOjl9",
+            "name": "Import",
+            "slug": "bedrijfsvoering-import",
+            "dashboard-image": {
+                "fileId": "66e0a0ff74edd7419188585e",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66e0a0ff74edd7419188585e_sales.png",
+                "alt": null
+            },
+            "workspace-4": "66db6995727c6c7df7c05eca",
+            "dashboard-omschrijving": "Een dashboard voor het importeren van data"
+        }
+    },
+    "6": {
+        "id": "66de11c5e9fda0d767ff1dcf",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-27T11:53:41.107Z",
+        "lastUpdated": "2024-09-27T06:34:35.394Z",
+        "createdOn": "2024-09-08T21:05:20.894Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/view?r=eyJrIjoiYWZiNjNjZmEtZDhkMi00ZDA5LTg1OTYtMWU0MzRlYzRlOGI4IiwidCI6IjRjMTM2ZmMxLTMyMTktNDJhNS1iOGYwLWQ0YTJjOTAwYWY0MSIsImMiOjl9",
+            "name": "Export",
+            "slug": "bedrijfsvoering-export",
+            "dashboard-image": {
+                "fileId": "66e0a0ff74edd7419188585e",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66e0a0ff74edd7419188585e_sales.png",
+                "alt": null
+            },
+            "workspace-4": "66db6995727c6c7df7c05eca",
+            "dashboard-omschrijving": "Een dashboard voor het exporteren van data"
+        }
+    },
+    "7": {
+        "id": "66f55c4fd89ef1fa2461e69c",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-26T19:24:41.021Z",
+        "lastUpdated": "2024-09-26T19:24:16.837Z",
+        "createdOn": "2024-09-26T19:24:16.837Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/reportEmbed?reportId=dd3b68b7-370f-4af6-b8a2-f7ad4bb38873&autoAuth=true&ctid=4c136fc1-3219-42a5-b8f0-d4a2c900af41",
+            "dashboard-omschrijving": "Dit is het dashboard voor de customer dashboard team",
+            "name": "Customer dashboard",
+            "slug": "bedrijfsvoering-customer-dashboard",
+            "dashboard-image": {
+                "fileId": "66e0a0ff74edd7419188585e",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66e0a0ff74edd7419188585e_sales.png",
+                "alt": null
+            },
+            "workspace-4": "66db6995727c6c7df7c05eca"
+        }
+    },
+    "8": {
+        "id": "66f57d54c1dc7907d6816ef3",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-26T19:31:27.979Z",
+        "lastUpdated": "2024-09-26T19:31:17.355Z",
+        "createdOn": "2024-09-26T19:31:17.355Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/reportEmbed?reportId=43234335-41cf-49d4-81a4-b1ef6c9e0051&autoAuth=true&ctid=4c136fc1-3219-42a5-b8f0-d4a2c900af41",
+            "dashboard-omschrijving": "Dit dashboard is voor het bekijken van de omzet",
+            "name": "Revenue overview",
+            "slug": "bedrijfsvoering-revenue-overview",
+            "dashboard-image": {
+                "fileId": "66e0a0ff74edd7419188585e",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66e0a0ff74edd7419188585e_sales.png",
+                "alt": null
+            },
+            "workspace-4": "66db6995727c6c7df7c05eca"
+        }
+    },
+    "9": {
+        "id": "66f57e10c1dc7907d6816ef4",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-26T19:35:27.979Z",
+        "lastUpdated": "2024-09-26T19:35:17.355Z",
+        "createdOn": "2024-09-26T19:35:17.355Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/reportEmbed?reportId=12345678-90ab-cdef-1234-567890abcdef&autoAuth=true&ctid=4c136fc1-3219-42a5-b8f0-d4a2c900af41",
+            "dashboard-omschrijving": "Een dashboard voor het beheren van klantgegevens",
+            "name": "Customer Management",
+            "slug": "bedrijfsvoering-customer-management",
+            "dashboard-image": {
+                "fileId": "66e0a0ff74edd7419188585e",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66e0a0ff74edd7419188585e_sales.png",
+                "alt": null
+            },
+            "workspace-4": "66db6995727c6c7df7c05eca"
+        }
+    },
+    "10": {
+        "id": "66f57e20c1dc7907d6816ef5",
+        "cmsLocaleId": "66159f642552318f6d171c39",
+        "lastPublished": "2024-09-26T19:40:27.979Z",
+        "lastUpdated": "2024-09-26T19:40:17.355Z",
+        "createdOn": "2024-09-26T19:40:17.355Z",
+        "isArchived": false,
+        "isDraft": false,
+        "fieldData": {
+            "public-link": "https://app.powerbi.com/reportEmbed?reportId=abcdef12-3456-7890-abcd-ef1234567890&autoAuth=true&ctid=4c136fc1-3219-42a5-b8f0-d4a2c900af41",
+            "dashboard-omschrijving": "Een dashboard voor het volgen van de klanttevredenheid",
+            "name": "Customer Satisfaction",
+            "slug": "bedrijfsvoering-customer-satisfaction",
+            "dashboard-image": {
+                "fileId": "66e0a0ff74edd7419188585e",
+                "url": "https://cdn.prod.website-files.com/66159f642552318f6d171c3a/66e0a0ff74edd7419188585e_sales.png",
+                "alt": null
+            },
+            "workspace-4": "66db6995727c6c7df7c05eca"
+        }
+    }
+}
+
+
