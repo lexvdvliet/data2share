@@ -1,3 +1,6 @@
+Prefered delivery through CDN
+A CDN (Content Delivery Network) improves website and application performance by delivering content from servers closest to users, reducing load times and latency. It ensures scalability during traffic spikes, enhances reliability by distributing load, provides security against attacks like DDoS, and lowers bandwidth costs. CDNs are ideal for global audiences, high-traffic sites, and applications needing fast, secure, and reliable content delivery.
+
 GitHub
 
 data2share/admin
