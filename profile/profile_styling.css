@@ -23,7 +23,7 @@
   }
 
   .plan-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+    background-color: var(--color--background);
   }
 
   .plan-table tbody tr:last-of-type {
