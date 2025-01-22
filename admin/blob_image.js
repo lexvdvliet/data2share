@@ -11,20 +11,35 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const selectedTabName = selectedTab.getAttribute('data-w-tab');
+      let selectedTabName = selectedTab.getAttribute('data-w-tab');
       console.log(`Selected tab name: ${selectedTabName}`);
 
-      // Dynamically fetch associated elements based on the tab name
+      let prefix = '';
+      if (selectedTabName === 'Site') {
+        // Determine prefix based on which button was clicked
+        if (uploadButton.id === 'LogouploadButton') {
+          prefix = 'Logo';
+        } else if (uploadButton.id === 'HeroimageuploadButton') {
+          prefix = 'Heroimage';
+        } else {
+          console.error('Unknown button clicked for "Site" tab.');
+          return;
+        }
+      } else {
+        prefix = selectedTabName; // Use the tab name for other tabs
+      }
+
+      // Dynamically fetch associated elements based on the prefix
       const elements = {
-        fileInput: document.getElementById(`${selectedTabName}fileInput`),
-        status: document.getElementById(`${selectedTabName}status`),
-        imageUrl: document.getElementById(`${selectedTabName}imageUrl`),
-        imageUpload: document.getElementById(`${selectedTabName}imageUpload`),
+        fileInput: document.getElementById(`${prefix}fileInput`),
+        status: document.getElementById(`${prefix}status`),
+        imageUrl: document.getElementById(`${prefix}imageUrl`),
+        imageUpload: document.getElementById(`${prefix}imageUpload`),
       };
 
       // Validate if all elements are found
       if (!elements.fileInput || !elements.status || !elements.imageUrl || !elements.imageUpload) {
-        console.error('One or more elements are missing for the current tab.');
+        console.error('One or more elements are missing for the current tab or prefix.');
         return;
       }
 
