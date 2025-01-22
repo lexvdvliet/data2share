@@ -156,11 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const accentColor = checkElementValue('.customize-accent-color-input', 'Error: Hero subtitle cannot be empty.');
             if (accentColor === null) return;
 
-            // const heroImage = checkElementValueById('customize-hero-image-input', 'Error: Hero image cannot be empty.');
-            // if (heroImage === null) return;
+            const heroImage = document.getElementById('HeroimageUrl').textContent;
 
-            // const logo = checkElementValueById('customize-logo-input', 'Error: Logo cannot be empty.');
-            // if (logo === null) return;
+            const logo = document.getElementById('LogoUrl').textContent;
 
             const street = checkElementValueById('customize-street-input', 'Error: Street cannot be empty.');
             if (street === null) return;
@@ -201,16 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
                   "hero-title": heroTitle,
                   "hero-subtitle": heroSubtitle,
                   "accent-color": accentColor,
-                //   "hero-image": {
-                //     "fileId": "673ba07b25b6b406eb4f2f6f",
-                //     "url": "https://cdn.prod.website-files.com/67366701db27b907faa64aed/673ba07b25b6b406eb4f2f6f_openart-image_sE0J2BuW_1731849297830_raw.jpg",
-                //     "alt": null
-                //   },
-                //   "logo": {
-                //     "fileId": "673eea2a55ca82dae0599734",
-                //     "url": "https://cdn.prod.website-files.com/67366701db27b907faa64aed/673eea2a55ca82dae0599734_3.png",
-                //     "alt": null
-                //   },
+                  "hero-image": heroImage,
+                  "logo": logo,
                   "support-mail": supportMail,
                   "support-phone": supportPhone,
                   "instagram": instagram,
