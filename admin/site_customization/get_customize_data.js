@@ -1,33 +1,18 @@
-// customize-hero-title
-// customize-hero-subtitle
-// customize-hero-image
-// customize-logo
-// customize-street
-// customize-house-number
-// customize-postcode
-// customize-city
-// customize-support-phone
-// customize-support-mail
-// customize-facebook
-// customize-linkedin
-// customize-github
-// customize-instagram
-// customize-youtube
-// customize-whatsapp
-// customize-twitter
-// customize-snapchat
-// customize-tiktok
+// get_customize_data.js
 
-// Create a new color picker instance
+// Get the computed background color
+const element = document.getElementById('customize-accent-color');
+const style = window.getComputedStyle(element);
+const backgroundColor = style.backgroundColor;
 // https://iro.js.org/guide.html#getting-started
 var colorPicker = new iro.ColorPicker(".ms-colorpicker", {
     // color picker options
-    // Option guide: https://iro.js.org/guide.html#color-picker-options
     width: 180,
-    //color: "rgb(255, 0, 0)",
+    color: backgroundColor,
     borderWidth: 5,
     borderColor: "#f5f5f5",
-});    
+});
+
 var values = document.getElementById("values");
 var hexInput = document.getElementById("hexInput");
 var swatch = document.getElementById("colorSwatch");    // https://iro.js.org/guide.html#color-picker-events
