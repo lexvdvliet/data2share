@@ -3,6 +3,9 @@ A CDN (Content Delivery Network) improves website and application performance by
 
 GitHub
 
+data2share
+https://lexvdvliet.github.io/data2share/accent_color.js
+
 data2share/admin
 https://lexvdvliet.github.io/data2share/admin/admin_styling.css
 https://lexvdvliet.github.io/data2share/admin/blob_image.js
