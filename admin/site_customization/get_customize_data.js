@@ -156,9 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const accentColor = checkElementValue('.customize-accent-color-input', 'Error: Hero subtitle cannot be empty.');
             if (accentColor === null) return;
 
-            const heroImage = document.getElementById('HeroimageUrl').textContent;
+            const heroImage = document.getElementById('HeroimageimageUrl').textContent;
 
-            const logo = document.getElementById('LogoUrl').textContent;
+            const logo = document.getElementById('LogoimageUrl').textContent;
 
             const street = checkElementValueById('customize-street-input', 'Error: Street cannot be empty.');
             if (street === null) return;
