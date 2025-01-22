@@ -78,5 +78,3 @@ https://cdn.jsdelivr.net/gh/lexvdvliet/data2share@latest/profile/request_plan.js
 
 data2share/web_analytics/
 https://cdn.jsdelivr.net/gh/lexvdvliet/data2share@latest/web_analytics/web_analytics.js
-
-https://cdn.jsdelivr.net/gh/lexvdvliet/data2share@latest/web_analytics/web_analytics.js
