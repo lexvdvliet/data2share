@@ -45,10 +45,6 @@ function selectAccount() {
   }
 }
 
-window.onload = function() {
-   selectAccount();
-};
-
 function signOut() {
   const username = currentAccounts[0].username
   const logoutRequest = {
@@ -60,4 +56,29 @@ function signOut() {
 
 document.getElementById("logout-btn").addEventListener("click", () => {
   signOut();
+});
+
+document.addEventListener("DOMContentLoaded", async function () {
+  async function displayUserInfo() {
+    if (currentAccounts.length > 0) {
+      const account = currentAccounts[0];
+
+      // Display basic user info
+      document.getElementById("user-info").style.display = "block";
+      document.getElementById("user-name").textContent = `Name: ${account.name}`;
+      document.getElementById("user-email").textContent = `Email: ${account.username}`;
+
+      // Check if user has the "admin" role
+      if (account.idTokenClaims && account.idTokenClaims.roles && account.idTokenClaims.roles.includes("admin")) {
+        document.getElementById("admin-section").style.display = "block";
+      } else {
+        console.log("User does not have the admin role.");
+      }
+
+    } else {
+      console.log("No accounts found.");
+    }
+  }
+
+  await displayUserInfo();
 });
