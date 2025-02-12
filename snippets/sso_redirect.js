@@ -33,6 +33,8 @@ myMSALObj.handleRedirectPromise()
 });
 
 const currentAccounts = myMSALObj.getAllAccounts();
+const currentAccount = currentAccounts[0]
+const userRoles = currentAccount.idTokenClaims.roles
   
 function selectAccount() {
   if (!currentAccounts || currentAccounts.length === 0) {
@@ -44,43 +46,25 @@ function selectAccount() {
   } else {
     username = currentAccounts[0].username;
     console.log("Logged in as:", username);
+    console.log("Login details:", currentAccounts);
   }
-}
+};
 
-function signOut() {
-  const username = currentAccounts[0].username
-  const logoutRequest = {
-    account: myMSALObj.getAccountByUsername(username),
-    postLogoutRedirectUri: "https://www.data2share.nl/test-page"
-  };
-  myMSALObj.logoutRedirect(logoutRequest);
-} 
+// Block rendering until roles are checked
+document.documentElement.style.display = "none";
 
-document.getElementById("logout-btn").addEventListener("click", () => {
-  signOut();
-});
-
-document.addEventListener("DOMContentLoaded", async function () {
-  async function displayUserInfo() {
-    if (currentAccounts.length > 0) {
-      const account = currentAccounts[0];
-
-      // Display basic user info
-      document.getElementById("user-info").style.display = "block";
-      document.getElementById("user-name").textContent = `Name: ${account.name}`;
-      document.getElementById("user-email").textContent = `Email: ${account.username}`;
-
-      // Check if user has the "admin" role
-      if (account.idTokenClaims && account.idTokenClaims.roles && account.idTokenClaims.roles.includes("admin")) {
-        document.getElementById("admin-section").style.display = "block";
-      } else {
-        console.log("User does not have the admin role.");
-      }
-
-    } else {
-      console.log("No accounts found.");
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll("[data-msal-content]");
+  
+  elements.forEach(element => {
+  const requiredRoles = element.getAttribute("data-msal-content").split(",");
+  const hasRole = requiredRoles.some(role => userRoles.includes(role.trim()));
+  
+  if (!hasRole) {
+      element.remove(); // Remove elements if roles don't match
   }
+  });
 
-  await displayUserInfo();
+  // Now that role check is done, show the content
+  document.documentElement.style.display = "initial"; // Allow content to be shown
 });

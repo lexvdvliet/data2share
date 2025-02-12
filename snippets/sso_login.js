@@ -31,13 +31,13 @@ function selectAccount() {
     } else {
       username = currentAccounts[0].username;
       console.log("Welcome", username);
+      console.log("Login details:", currentAccounts[0]);
     }
   }  
 
 myMSALObj.handleRedirectPromise()
   .then((response) => {
     if (response) {
-      console.log("Login successful:", response);
       window.location.href = "https://www.data2share.nl/redirect";
     }
     selectAccount();
