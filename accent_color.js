@@ -1,4 +1,8 @@
-const accentColorPicker = document.getElementById('accent-color-picker');
-const accentColorStyle = window.getComputedStyle(accentColorPicker);
-let accentColorD2S = accentColorStyle.color;
-document.documentElement.style.setProperty('--accentcolor', accentColorD2S);
+const savedAccentColor = localStorage.getItem('accentColor');
+
+if (savedAccentColor) {
+  // Inject into a style tag early in the head
+  const style = document.createElement('style');
+  style.textContent = `:root { --accentcolor: ${savedAccentColor}; }`;
+  document.head.appendChild(style);
+}

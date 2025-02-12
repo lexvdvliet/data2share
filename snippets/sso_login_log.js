@@ -29,7 +29,7 @@ document.getElementById("login-btn").addEventListener("click", () => {
   console.log("Login button clicked.");
 
   const loginRequest = {
-    scopes: ["openid", "profile", "User.Read"]
+    scopes: ["openid", "profile", "User.Read", "Files.Read.All", "Sites.Read.All"]
   };
 
   console.log("Triggering loginRedirect...");

@@ -15,7 +15,9 @@ const loginRequest = {
   scopes: [
     "openid", 
     "profile", 
-    "User.Read"
+    "User.Read",
+    "Files.Read.All", 
+    "Sites.Read.All"
   ] 
 };
 
