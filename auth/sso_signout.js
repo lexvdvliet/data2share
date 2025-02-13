@@ -1,5 +1,4 @@
-const currentAccounts = myMSALObj.getAllAccounts();
-const currentAccount = currentAccounts[0]
+
 
 function signOut() {
     const username = currentAccounts[0].username

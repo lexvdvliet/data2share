@@ -101,3 +101,6 @@ function showContent(userRoles, source) {
 }
 
 checkAuthentication();
+
+const currentAccounts = myMSALObj.getAllAccounts();
+const currentAccount = currentAccounts[0]
