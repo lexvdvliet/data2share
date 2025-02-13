@@ -34,6 +34,7 @@ async function checkAuthentication() {
     if (memberstackRoles.length > 0) {
       console.log("Using Memberstack roles:", memberstackRoles);
       showContent(memberstackRoles, "Memberstack");
+      document.getElementById("logout-btn").remove();
     } else {
       console.log("No valid Memberstack or Microsoft account found.");
       window.location.href = "https://www.data2share.nl/access-denied";
