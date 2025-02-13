@@ -11,7 +11,7 @@ const msalConfig = {
 };
 
 const myMSALObj = new msal.PublicClientApplication(msalConfig);
-document.documentElement.style.visibility = "hidden"; // Hide content initially
+document.documentElement.style.visibility = "hidden"; 
 
 async function checkAuthentication() {
   try {
@@ -45,11 +45,11 @@ async function checkAuthentication() {
 }
 
 async function initialize() {
-  document.documentElement.style.display = "none"; // Hide content initially
+  document.documentElement.style.display = "none";
   
   const waitForDom = new Promise((resolve) => {
     if (document.readyState === "complete" || document.readyState === "interactive") {
-      resolve(); // DOM is already ready
+      resolve(); 
     } else {
       document.addEventListener("DOMContentLoaded", resolve);
     }
@@ -57,7 +57,7 @@ async function initialize() {
 
   const memberRoles = await getMemberstackRoles();
   
-  await waitForDom; // Wait for the DOM to be ready
+  await waitForDom; 
   console.log("DOM and Memberstack roles are ready:", memberRoles);
 
   showContent(memberRoles);
@@ -97,8 +97,7 @@ function showContent(userRoles, source) {
     });
 
     document.documentElement.style.visibility = "visible"; 
-  }, 200); // Vertraging van 200 milliseconden
+  }, 200); 
 }
 
-// Start the authentication check
 checkAuthentication();
