@@ -11,6 +11,7 @@ const msalConfig = {
 };
 
 const myMSALObj = new msal.PublicClientApplication(msalConfig);
+document.documentElement.style.visibility = "hidden"; // Hide content initially
 
 async function checkAuthentication() {
   try {
@@ -23,7 +24,8 @@ async function checkAuthentication() {
     if (currentAccounts.length > 0) {
       console.log("Using Microsoft account:", currentAccounts[0]);
       const microsoftRoles = currentAccounts[0].idTokenClaims.roles || [];
-      handleRoleBasedContent(microsoftRoles, "Microsoft");
+      console.log("Microsoft roles:", microsoftRoles);
+      showContent(microsoftRoles, "Microsoft");
       return;
     }
 
@@ -31,7 +33,7 @@ async function checkAuthentication() {
     const memberstackRoles = await getUserRolesMs();
     if (memberstackRoles.length > 0) {
       console.log("Using Memberstack roles:", memberstackRoles);
-      handleRoleBasedContent(memberstackRoles, "Memberstack");
+      showContent(memberstackRoles, "Memberstack");
     } else {
       console.log("No valid Memberstack or Microsoft account found.");
       window.location.href = "https://www.data2share.nl/access-denied";
@@ -40,6 +42,25 @@ async function checkAuthentication() {
     console.error("Error in checkAuthentication:", error);
     window.location.href = "https://www.data2share.nl/access-denied";
   }
+}
+
+async function initialize() {
+  document.documentElement.style.display = "none"; // Hide content initially
+  
+  const waitForDom = new Promise((resolve) => {
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      resolve(); // DOM is already ready
+    } else {
+      document.addEventListener("DOMContentLoaded", resolve);
+    }
+  });
+
+  const memberRoles = await getMemberstackRoles();
+  
+  await waitForDom; // Wait for the DOM to be ready
+  console.log("DOM and Memberstack roles are ready:", memberRoles);
+
+  showContent(memberRoles);
 }
 
 async function getUserRolesMs() {
@@ -62,27 +83,22 @@ async function getUserRolesMs() {
   return userRolesMs;
 }
 
-function handleRoleBasedContent(userRoles, source) {
-  console.log(`Handling content for ${source} roles:`, userRoles);
-  document.addEventListener("DOMContentLoaded", () => {
+function showContent(userRoles, source) {
+  setTimeout(() => {
     const elements = document.querySelectorAll("[data-msal-content]");
 
     elements.forEach(element => {
       const requiredRoles = element.getAttribute("data-msal-content").split(",");
-      const hasRole = requiredRoles.some(role => userRoles.includes(role.trim()));
 
+      const hasRole = requiredRoles.some(role => userRoles.includes(role.trim()));
       if (!hasRole) {
-        element.remove(); // Remove elements if roles don't match
-      }
+        element.remove();
+    }
     });
 
-    // Show content after role check
-    document.documentElement.style.display = "initial";
-  });
+    document.documentElement.style.visibility = "visible"; 
+  }, 200); // Vertraging van 200 milliseconden
 }
-
-// Hide content until roles are checked
-document.documentElement.style.display = "none";
 
 // Start the authentication check
 checkAuthentication();
