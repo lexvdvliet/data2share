@@ -10,4 +10,5 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("profile-lastname").textContent = null;
       }
     }
+    await displayUserInfo();
   });
