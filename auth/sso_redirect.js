@@ -30,6 +30,7 @@ async function checkAuthentication() {
     } else {
       console.log("No Microsoft account found. Checking Memberstack...");
       userRoles = await getUserRolesMs();
+      document.getElementById("logout-btn")?.remove();
       console.log("Memberstack roles:", userRoles);
     }
 
@@ -40,7 +41,6 @@ async function checkAuthentication() {
           document.documentElement.style.visibility = "visible";
         }
 
-      document.getElementById("logout-btn")?.remove();
     } else {
       console.log("No valid roles found.");
       window.location.href = "https://www.data2share.nl/access-denied";
