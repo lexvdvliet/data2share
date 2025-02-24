@@ -11,9 +11,11 @@ const msalConfig = {
 };
 
 const myMSALObj = new msal.PublicClientApplication(msalConfig);
-document.documentElement.style.visibility = "hidden"; 
+document.documentElement.style.visibility = "hidden"; // Keep page hidden until access check
 
 async function checkAuthentication() {
+  let userRoles = [];
+
   try {
     const response = await myMSALObj.handleRedirectPromise();
     if (response) {
@@ -23,45 +25,32 @@ async function checkAuthentication() {
     const currentAccounts = myMSALObj.getAllAccounts();
     if (currentAccounts.length > 0) {
       console.log("Using Microsoft account:", currentAccounts[0]);
-      const microsoftRoles = currentAccounts[0].idTokenClaims.roles || [];
-      console.log("Microsoft roles:", microsoftRoles);
-      showContent(microsoftRoles, "Microsoft");
-      return;
+      userRoles = currentAccounts[0].idTokenClaims.roles || [];
+      console.log("Microsoft roles:", userRoles);
+    } else {
+      console.log("No Microsoft account found. Checking Memberstack...");
+      userRoles = await getUserRolesMs();
+      console.log("Memberstack roles:", userRoles);
     }
 
-    console.log("No Microsoft account found. Checking Memberstack...");
-    const memberstackRoles = await getUserRolesMs();
-    if (memberstackRoles.length > 0) {
-      console.log("Using Memberstack roles:", memberstackRoles);
-      showContent(memberstackRoles, "Memberstack");
-      document.getElementById("logout-btn").remove();
+    if (userRoles.length > 0) {
+      document.addEventListener("DOMContentLoaded", async () => {
+        const accessGranted = await checkUserAccess(userRoles);
+        if (accessGranted) {
+          showContent(userRoles, "Microsoft or Memberstack");
+          document.documentElement.style.visibility = "visible"; // Show page only after access check
+        }
+      });
+
+      document.getElementById("logout-btn")?.remove();
     } else {
-      console.log("No valid Memberstack or Microsoft account found.");
+      console.log("No valid roles found.");
       window.location.href = "https://www.data2share.nl/access-denied";
     }
   } catch (error) {
     console.error("Error in checkAuthentication:", error);
     window.location.href = "https://www.data2share.nl/access-denied";
   }
-}
-
-async function initialize() {
-  document.documentElement.style.display = "none";
-  
-  const waitForDom = new Promise((resolve) => {
-    if (document.readyState === "complete" || document.readyState === "interactive") {
-      resolve(); 
-    } else {
-      document.addEventListener("DOMContentLoaded", resolve);
-    }
-  });
-
-  const memberRoles = await getMemberstackRoles();
-  
-  await waitForDom; 
-  console.log("DOM and Memberstack roles are ready:", memberRoles);
-
-  showContent(memberRoles);
 }
 
 async function getUserRolesMs() {
@@ -87,18 +76,37 @@ async function getUserRolesMs() {
 function showContent(userRoles, source) {
   setTimeout(() => {
     const elements = document.querySelectorAll("[data-msal-content]");
-
     elements.forEach(element => {
       const requiredRoles = element.getAttribute("data-msal-content").split(",");
-
       const hasRole = requiredRoles.some(role => userRoles.includes(role.trim()));
       if (!hasRole) {
         element.remove();
-    }
+      }
     });
+  }, 200);
+}
 
-    document.documentElement.style.visibility = "visible"; 
-  }, 200); 
+async function checkUserAccess(userRoles) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const workspaceRoleElement = document.getElementById("workspace-role");
+      if (!workspaceRoleElement) {
+        window.location.href = "https://www.data2share.nl/access-denied";
+        resolve(false);
+        return;
+      }
+
+      const workspaceRole = workspaceRoleElement.textContent.trim();
+      const hasAccess = userRoles.some(role => role.trim() === workspaceRole);
+
+      if (hasAccess) {
+        resolve(true);
+      } else {
+        window.location.href = "https://www.data2share.nl/access-denied";
+        resolve(false);
+      }
+    }, 200);
+  });
 }
 
 checkAuthentication();
