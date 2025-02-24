@@ -91,7 +91,6 @@ async function checkUserAccess(userRoles) {
     setTimeout(() => {
       const workspaceRoleElement = document.getElementById("workspace-role");
       if (!workspaceRoleElement) {
-        window.location.href = "https://www.data2share.nl/access-denied";
         resolve(false);
         return;
       }
