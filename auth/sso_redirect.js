@@ -11,7 +11,7 @@ const msalConfig = {
 };
 
 const myMSALObj = new msal.PublicClientApplication(msalConfig);
-document.documentElement.style.visibility = "hidden"; // Keep page hidden until access check
+document.documentElement.style.visibility = "hidden"; 
 
 async function checkAuthentication() {
   let userRoles = [];
@@ -34,13 +34,11 @@ async function checkAuthentication() {
     }
 
     if (userRoles.length > 0) {
-      document.addEventListener("DOMContentLoaded", async () => {
-        const accessGranted = await checkUserAccess(userRoles);
+      const accessGranted = await checkUserAccess(userRoles);
+      showContent(userRoles, "Microsoft or Memberstack");
         if (accessGranted) {
-          showContent(userRoles, "Microsoft or Memberstack");
-          document.documentElement.style.visibility = "visible"; // Show page only after access check
+          document.documentElement.style.visibility = "visible";
         }
-      });
 
       document.getElementById("logout-btn")?.remove();
     } else {
@@ -73,19 +71,6 @@ async function getUserRolesMs() {
   return userRolesMs;
 }
 
-function showContent(userRoles, source) {
-  setTimeout(() => {
-    const elements = document.querySelectorAll("[data-msal-content]");
-    elements.forEach(element => {
-      const requiredRoles = element.getAttribute("data-msal-content").split(",");
-      const hasRole = requiredRoles.some(role => userRoles.includes(role.trim()));
-      if (!hasRole) {
-        element.remove();
-      }
-    });
-  }, 200);
-}
-
 async function checkUserAccess(userRoles) {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -96,7 +81,10 @@ async function checkUserAccess(userRoles) {
       }
 
       const workspaceRole = workspaceRoleElement.textContent.trim();
-      const hasAccess = userRoles.some(role => role.trim() === workspaceRole);
+
+      const hasAccess = userRoles.some(role => {
+        return role.trim() === workspaceRole;
+      });
 
       if (hasAccess) {
         resolve(true);
@@ -106,6 +94,23 @@ async function checkUserAccess(userRoles) {
       }
     }, 200);
   });
+}
+
+function showContent(userRoles, source) {
+  setTimeout(() => {
+    const elements = document.querySelectorAll("[data-msal-content]");
+
+    elements.forEach(element => {
+      const requiredRoles = element.getAttribute("data-msal-content").split(",");
+
+      const hasRole = requiredRoles.some(role => userRoles.includes(role.trim()));
+      if (!hasRole) {
+        element.remove();
+    }
+    });
+
+    document.documentElement.style.visibility = "visible"; 
+  }, 200); 
 }
 
 checkAuthentication();
