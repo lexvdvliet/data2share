@@ -75,18 +75,37 @@ async function checkUserAccess(userRoles) {
   return new Promise((resolve) => {
     setTimeout(() => {
       const workspaceRoleElement = document.getElementById("workspace-role");
-      if (!workspaceRoleElement) {
-        resolve(false);
+
+      if (workspaceRoleElement) {
+        const workspaceRole = workspaceRoleElement.textContent.trim();
+        const hasAccess = userRoles.some(role => role.trim() === workspaceRole);
+
+        if (hasAccess) {
+          resolve(true);
+        } else {
+          window.location.href = "https://www.data2share.nl/access-denied";
+          resolve(false);
+        }
         return;
       }
 
-      const workspaceRole = workspaceRoleElement.textContent.trim();
+      const dashboardRoleList = document.getElementById("dashboard-role-list");
 
-      const hasAccess = userRoles.some(role => {
-        return role.trim() === workspaceRole;
-      });
+      if (!dashboardRoleList) {
+        console.log("Geen workspaceRoleElement en geen dashboardRoleList. Geen actie ondernomen.");
+        resolve(null);
+        return;
+      }
 
-      if (hasAccess) {
+      const dashboardRoles = Array.from(
+        document.querySelectorAll("#dashboard-role-list p#dashboard-roles:not(.w-condition-invisible)")
+      ).map(el => el.textContent.trim());
+
+      console.log("dashboardRoles:", dashboardRoles);
+
+      const hasMatchingRole = userRoles.some(role => dashboardRoles.includes(role));
+
+      if (hasMatchingRole) {
         resolve(true);
       } else {
         window.location.href = "https://www.data2share.nl/access-denied";
