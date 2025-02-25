@@ -1,17 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const setupSearch = (inputId, textClass) => {
-        const searchInput = document.getElementById(inputId);
-        if (!searchInput) return; // Voorkomt fouten als het element niet bestaat
+document.addEventListener("DOMContentLoaded", function () { 
+    document.getElementById("dashboardSearchInput").addEventListener("input", function () {
+      let filter = this.value.toLowerCase();
+      let items = document.querySelectorAll(".w-dyn-item");
 
-        searchInput.addEventListener("input", () => {
-            const filter = searchInput.value.toLowerCase();
-            document.querySelectorAll(".w-dyn-item").forEach(item => {
-                const textElement = item.querySelector(`.${textClass}`);
-                item.style.display = textElement && textElement.textContent.trim().toLowerCase().includes(filter) ? "" : "none";
-            });
+      items.forEach(item => {
+        let textElement = item.querySelector(".dash_nav_link-text");
+        
+        if (textElement) { // Zorg ervoor dat het element bestaat voordat je het leest
+          let text = textElement.textContent.trim().toLowerCase();
+          item.style.display = text.includes(filter) ? "" : "none";
+        }
+      });
+    });
+});
+  
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("workspaceSearchInput").addEventListener("input", function () {
+        let filter = this.value.toLowerCase();
+        let items = document.querySelectorAll(".w-dyn-item");
+
+        items.forEach(item => {
+        let textElement = item.querySelector(".work_nav_link-text");
+        
+        if (textElement) { // Zorg ervoor dat het element bestaat voordat je het leest
+            let text = textElement.textContent.trim().toLowerCase();
+            item.style.display = text.includes(filter) ? "" : "none";
+        }
         });
-    };
-
-    setupSearch("dashboardSearchInput", "dash_nav_link-text");
-    setupSearch("workspaceSearchInput", "work_nav_link-text");
+    });
 });
