@@ -1,5 +1,3 @@
-
-
 function signOut() {
     const username = currentAccounts[0].username
     const logoutRequest = {

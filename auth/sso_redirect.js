@@ -110,8 +110,8 @@ async function checkUserAccess(userRoles) {
       }
 
       const dashboardRoles = Array.from(
-        document.querySelectorAll("#dashboard-role-list p#dashboard-roles:not(.w-condition-invisible)")
-      ).map(el => el.textContent.trim());
+        document.querySelectorAll("#assigned-dashboard-role-list p:not(.w-condition-invisible)")
+      ).map(el => el.textContent.trim());      
 
       console.log("dashboardRoles:", dashboardRoles);
 
