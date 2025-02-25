@@ -74,6 +74,18 @@ async function getUserRolesMs() {
 async function checkUserAccess(userRoles) {
   return new Promise((resolve) => {
     setTimeout(() => {
+      const baseUrl = window.location.origin;
+      const adminUrl = `${baseUrl}/admin`;
+
+      // Check if the user is on the admin page
+      if (window.location.href === adminUrl) {
+        if (!userRoles.includes("admin")) {
+          window.location.href = "https://www.data2share.nl/access-denied";
+          resolve(false);
+          return;
+        }
+      }
+
       const workspaceRoleElement = document.getElementById("assigned-workspace-role");
 
       if (workspaceRoleElement) {
