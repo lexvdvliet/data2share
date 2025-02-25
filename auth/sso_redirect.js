@@ -74,7 +74,7 @@ async function getUserRolesMs() {
 async function checkUserAccess(userRoles) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const workspaceRoleElement = document.getElementById("workspace-role");
+      const workspaceRoleElement = document.getElementById("assigned-workspace-role");
 
       if (workspaceRoleElement) {
         const workspaceRole = workspaceRoleElement.textContent.trim();
@@ -89,7 +89,7 @@ async function checkUserAccess(userRoles) {
         return;
       }
 
-      const dashboardRoleList = document.getElementById("dashboard-role-list");
+      const dashboardRoleList = document.getElementById("assigned-dashboard-role-list");
 
       if (!dashboardRoleList) {
         console.log("Geen workspaceRoleElement en geen dashboardRoleList. Geen actie ondernomen.");
