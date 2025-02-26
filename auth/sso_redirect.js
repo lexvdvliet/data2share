@@ -1,15 +1,3 @@
-const msalConfig = {
-  auth: {
-    clientId: msal-client-id,
-    authority: `https://login.microsoftonline.com/${msal-tenant-id}`,
-    redirectUri: window.location.origin + "/datatoshare-home"
-  },
-  cache: {
-    cacheLocation: "localStorage",
-    storeAuthStateInCookie: false
-  }
-};
-
 const myMSALObj = new msal.PublicClientApplication(msalConfig);
 document.documentElement.style.visibility = "hidden"; 
 
