@@ -2,7 +2,7 @@ const msalConfig = {
   auth: {
     clientId: "46b86472-683d-4a28-a6d0-2c69d3e1ce41",
     authority: "https://login.microsoftonline.com/3790009a-a120-44ed-a6ba-1fdf516e3e43",
-    redirectUri: "https://www.data2share.nl/datatoshare-home"
+    redirectUri: window.location.origin + "/datatoshare-home"
   },
   cache: {
     cacheLocation: "localStorage",
@@ -43,11 +43,11 @@ async function checkAuthentication() {
 
     } else {
       console.log("No valid roles found.");
-      window.location.href = "https://www.data2share.nl/access-denied";
+      window.location.href = window.location.origin + "/access-denied";;
     }
   } catch (error) {
     console.error("Error in checkAuthentication:", error);
-    window.location.href = "https://www.data2share.nl/access-denied";
+    window.location.href = window.location.origin + "/access-denied";;
   }
 }
 
@@ -77,10 +77,9 @@ async function checkUserAccess(userRoles) {
       const baseUrl = window.location.origin;
       const adminUrl = `${baseUrl}/admin`;
 
-      // Check if the user is on the admin page
       if (window.location.href === adminUrl) {
         if (!userRoles.includes("admin")) {
-          window.location.href = "https://www.data2share.nl/access-denied";
+          window.location.href = baseUrl + "/access-denied";
           resolve(false);
           return;
         }
@@ -95,7 +94,7 @@ async function checkUserAccess(userRoles) {
         if (hasAccess) {
           resolve(true);
         } else {
-          window.location.href = "https://www.data2share.nl/access-denied";
+          window.location.href = window.location.origin + "/access-denied";
           resolve(false);
         }
         return;
@@ -120,7 +119,7 @@ async function checkUserAccess(userRoles) {
       if (hasMatchingRole) {
         resolve(true);
       } else {
-        window.location.href = "https://www.data2share.nl/access-denied";
+        window.location.href = window.location.origin + "/access-denied";
         resolve(false);
       }
     }, 200);

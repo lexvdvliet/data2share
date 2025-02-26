@@ -2,7 +2,7 @@ function signOut() {
     const username = currentAccounts[0].username
     const logoutRequest = {
       account: myMSALObj.getAccountByUsername(username),
-      postLogoutRedirectUri: "https://www.data2share.nl/log-out"
+      postLogoutRedirectUri: window.location.origin + "/log-out"
     };
     myMSALObj.logoutRedirect(logoutRequest);
   } 
