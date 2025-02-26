@@ -1,4 +1,4 @@
-# Github repository for custom d2s code
+# Github ReadMe Data2Share
 
 github pages
 
