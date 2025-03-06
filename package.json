@@ -1,0 +1,20 @@
+{
+  "name": "data2share",
+  "version": "1.0.0",
+  "description": "github pages",
+  "main": "accent_color.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexvdvliet/data2share.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lexvdvliet/data2share/issues"
+  },
+  "homepage": "https://github.com/lexvdvliet/data2share#readme"
+}
