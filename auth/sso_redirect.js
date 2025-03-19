@@ -2,7 +2,7 @@ const myMSALObj = new msal.PublicClientApplication(msalConfig);
 document.documentElement.style.visibility = "hidden"; 
 
 async function checkAuthentication() {
-  let userRoles = [];
+  window.userRoles = [];
 
   try {
     const response = await myMSALObj.handleRedirectPromise();
@@ -13,29 +13,28 @@ async function checkAuthentication() {
     const currentAccounts = myMSALObj.getAllAccounts();
     if (currentAccounts.length > 0) {
       console.log("Using Microsoft account:", currentAccounts[0]);
-      userRoles = currentAccounts[0].idTokenClaims.roles || [];
-      console.log("Microsoft roles:", userRoles);
+      window.userRoles = currentAccounts[0].idTokenClaims.roles || [];
+      console.log("Microsoft roles:", window.userRoles);
     } else {
       console.log("No Microsoft account found. Checking Memberstack...");
-      userRoles = await getUserRolesMs();
+      window.userRoles = await getUserRolesMs();
       document.getElementById("logout-btn")?.remove();
-      console.log("Memberstack roles:", userRoles);
+      console.log("Memberstack roles:", window.userRoles);
     }
 
-    if (userRoles.length > 0) {
-      const accessGranted = await checkUserAccess(userRoles);
-      showContent(userRoles, "Microsoft or Memberstack");
-        if (accessGranted) {
-          document.documentElement.style.visibility = "visible";
-        }
-
+    if (window.userRoles.length > 0) {
+      const accessGranted = await checkUserAccess(window.userRoles);
+      showContent(window.userRoles, "Microsoft or Memberstack");
+      if (accessGranted) {
+        document.documentElement.style.visibility = "visible";
+      }
     } else {
       console.log("No valid roles found.");
-      window.location.href = window.location.origin + "/access-denied";;
+      window.location.href = window.location.origin + "/access-denied";
     }
   } catch (error) {
     console.error("Error in checkAuthentication:", error);
-    window.location.href = window.location.origin + "/access-denied";;
+    window.location.href = window.location.origin + "/access-denied";
   }
 }
 
