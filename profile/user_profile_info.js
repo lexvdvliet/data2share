@@ -1,5 +1,6 @@
 async function getProfilePhoto() {
-  
+  const currentAccounts = myMSALObj.getAllAccounts();
+
   if (currentAccounts.length === 0) {
     console.error("Geen accounts gevonden");
     return;
@@ -8,11 +9,12 @@ async function getProfilePhoto() {
   const account = currentAccounts[0];
   myMSALObj.setActiveAccount(account);
 
-  // Controleer of de afbeelding al gecached is in localStorage
+  // Controleer of er een gecachte afbeelding is
   const cachedImage = localStorage.getItem("profilePhoto");
 
   if (cachedImage) {
     document.getElementById("user-profile-image").src = cachedImage;
+    document.getElementById("profile-image").src = base64data;
     return;
   }
 
@@ -34,14 +36,19 @@ async function getProfilePhoto() {
     if (!response.ok) throw new Error("Fout bij ophalen profielfoto");
 
     const blob = await response.blob();
-    const imgUrl = URL.createObjectURL(blob);
+    
+    // Converteer Blob naar Base64
+    const reader = new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onloadend = function () {
+      const base64data = reader.result;
 
-    // Cache de afbeelding in localStorage zodat deze blijft bestaan tussen sessies
-    localStorage.setItem("profilePhoto", imgUrl);
+      // Sla Base64 afbeelding op in localStorage
+      localStorage.setItem("profilePhoto", base64data);
+      document.getElementById("user-profile-image").src = base64data;
+      document.getElementById("profile-image").src = base64data;
+    };
 
-    // Zet de profielfoto in de img element
-    document.getElementById("user-profile-image").src = imgUrl;
-    document.getElementById("profile-image").src = imgUrl;
   } catch (error) {
     console.error("Fout bij ophalen profielfoto:", error);
   }
