@@ -9,12 +9,18 @@ async function getProfilePhoto() {
   const account = currentAccounts[0];
   myMSALObj.setActiveAccount(account);
 
-  // Controleer of er een gecachte afbeelding is
   const cachedImage = localStorage.getItem("profilePhoto");
 
+  const setImageIfExists = (id, src) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.src = src;
+    }
+  };
+
   if (cachedImage) {
-    document.getElementById("user-profile-image").src = cachedImage;
-    document.getElementById("profile-image").src = base64data;
+    setImageIfExists("user-profile-image", cachedImage);
+    setImageIfExists("profile-image", cachedImage);
     return;
   }
 
@@ -37,16 +43,14 @@ async function getProfilePhoto() {
 
     const blob = await response.blob();
     
-    // Converteer Blob naar Base64
     const reader = new FileReader();
     reader.readAsDataURL(blob);
     reader.onloadend = function () {
       const base64data = reader.result;
 
-      // Sla Base64 afbeelding op in localStorage
       localStorage.setItem("profilePhoto", base64data);
-      document.getElementById("user-profile-image").src = base64data;
-      document.getElementById("profile-image").src = base64data;
+      setImageIfExists("user-profile-image", base64data);
+      setImageIfExists("profile-image", base64data);
     };
 
   } catch (error) {
@@ -66,7 +70,6 @@ async function getProfileData() {
   const account = currentAccounts[0];
   myMSALObj.setActiveAccount(account);
 
-  // Controleer of er al gecachede gegevens zijn
   const cachedProfile = localStorage.getItem("profileData");
 
   if (cachedProfile) {
@@ -94,10 +97,8 @@ async function getProfileData() {
 
     const userData = await response.json();
     
-    // Sla de gegevens op in localStorage
     localStorage.setItem("profileData", JSON.stringify(userData));
 
-    // Update de UI met de gebruikersgegevens
     updateProfileUI(userData, account.username);
 
   } catch (error) {
@@ -105,14 +106,22 @@ async function getProfileData() {
   }
 }
 
-// Hulpfunctie om de UI te updaten
 function updateProfileUI(userData, email) {
-  document.getElementById("user-profile-mail").textContent = email || "Geen mail beschikbaar";
-  document.getElementById("user-first-name").textContent = userData.givenName || "Geen voornaam beschikbaar";
-  document.getElementById("user-last-name").textContent = userData.surname || "Geen achternaam beschikbaar";
-  document.getElementById("user-job-title").textContent = userData.jobTitle || "Geen functie beschikbaar";
-  document.getElementById("user-phone-number").textContent = (userData.businessPhones.length > 0 ? userData.businessPhones[0] : "Geen telefoonnummer beschikbaar");
+  const setTextIfExists = (id, text) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.textContent = text;
+    }
+  };
+
+  setTextIfExists("profile-first-name", userData.givenName || "Geen voornaam beschikbaar");
+  setTextIfExists("profile-last-name", userData.surname || "Geen achternaam beschikbaar");
+  setTextIfExists("profile-mail", email || "Geen mail beschikbaar");
+  setTextIfExists("user-profile-mail", email || "Geen mail beschikbaar");
+  setTextIfExists("user-first-name", userData.givenName || "Geen voornaam beschikbaar");
+  setTextIfExists("user-last-name", userData.surname || "Geen achternaam beschikbaar");
+  setTextIfExists("user-job-title", userData.jobTitle || "Geen functie beschikbaar");
+  setTextIfExists("user-phone-number", (userData.businessPhones.length > 0 ? userData.businessPhones[0] : "Geen telefoonnummer beschikbaar"));
 }
 
-// Roep de functie aan
 getProfileData();
