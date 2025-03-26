@@ -122,6 +122,17 @@ function updateProfileUI(userData, email) {
   setTextIfExists("user-last-name", userData.surname || "Geen achternaam beschikbaar");
   setTextIfExists("user-job-title", userData.jobTitle || "Geen functie beschikbaar");
   setTextIfExists("user-phone-number", (userData.businessPhones.length > 0 ? userData.businessPhones[0] : "Geen telefoonnummer beschikbaar"));
+
+  const profileButton = document.querySelector('.profile_button-div a[data-ms-action="profile-image"]');
+  if (profileButton) {
+    profileButton.href = "https://myaccount.microsoft.com/?ref=MeControl";
+    profileButton.setAttribute("target", "_blank"); 
+    profileButton.removeAttribute("data-ms-action");
+  }
+  const profileInput = document.querySelector('.profile_button-div input[profile-image="true"]');
+  if (profileInput) {
+    profileInput.remove();
+  }
 }
 
 getProfileData();
