@@ -1,4 +1,12 @@
 // post_new_workspace.js
+document.getElementById("add-tile-button").addEventListener("click", function() {
+    document.getElementById("add-tile-modal").style.display = "block";
+  });
+
+document.getElementById("close-add-tile-modal").addEventListener("click", function() {
+    document.getElementById("add-tile-modal").style.display = "none";
+  });
+
 document.addEventListener('DOMContentLoaded', () => {
     // Part 1: Update Dashboard Table
     const updateButton = document.querySelector('.new-dashboards-button');

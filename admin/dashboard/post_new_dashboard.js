@@ -1,4 +1,12 @@
 // post_new_dashboard.js
+document.getElementById("add-item-button").addEventListener("click", function() {
+    document.getElementById("add-item-modal").style.display = "block";
+  });
+  
+document.getElementById("close-add-item-modal").addEventListener("click", function() {
+    document.getElementById("add-item-modal").style.display = "none";
+  });
+
 document.addEventListener('DOMContentLoaded', () => {
     // Create Dashboard Button
     const createDashboardButton = document.querySelector('.create-dashboard-button');
