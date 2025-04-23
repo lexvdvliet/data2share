@@ -50,10 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Find the existing table or create one if it doesn't exist
-        let table = workspaceDashboardsElement.querySelector('.admin-table');
+        let table = document.getElementById('dashboardTable');
 
         if (!table) {
             table = document.createElement('table');
+            table.id = 'dashboardTable';
             table.classList.add('admin-table');
 
             const headerRow = document.createElement('tr');

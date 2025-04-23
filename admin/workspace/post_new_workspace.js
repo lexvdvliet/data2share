@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!table) {
             table = document.createElement('table');
+            table.id = 'newDashboardTable';
             table.classList.add('admin-table');
 
             const headerRow = document.createElement('tr');
@@ -113,8 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const workspaceRole = checkElementValue('.new-workspace-role', 'Error: Workspace role cannot be empty.');
             if (workspaceRole === null) return;
 
-            const activeTab = document.querySelector('.w-tab-pane.w--tab-active');
-            const dashboardTableRows = activeTab.querySelectorAll('.admin-table tr');
+            const dashboardTable = document.getElementById('newDashboardTable');
+            const dashboardTableRows = dashboardTable.querySelectorAll('.admin-table tr');
             const dashboards = Array.from(dashboardTableRows).slice(1).map(row => row.querySelector('td:first-child').textContent.trim());
 
             const payload = {

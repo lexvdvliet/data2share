@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Create a new table element with the 'admin-table' class
         const table = document.createElement('table');
+        table.id = 'dashboardTable';
         table.classList.add('admin-table'); // Add the admin-table class for styling
 
         // Create the table header row

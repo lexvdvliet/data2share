@@ -13,7 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let selectedTabName = selectedTab.getAttribute('data-w-tab');
       console.log(`Selected tab name: ${selectedTabName}`);
-
+      
+      // Controleer of een van de modals zichtbaar is
+      const addTileModal = document.getElementById('add-tile-modal');
+      const addItemModal = document.getElementById('add-item-modal');
+      
+      const isAddTileVisible = addTileModal && getComputedStyle(addTileModal).display === 'block';
+      const isAddItemVisible = addItemModal && getComputedStyle(addItemModal).display === 'block';
+      
+      if (isAddTileVisible || isAddItemVisible) {
+        if (selectedTabName.endsWith('s')) {
+          selectedTabName = selectedTabName.slice(0, -1);
+        }
+        selectedTabName += ' toevoegen';
+      }
+       
       let prefix = '';
       if (selectedTabName === 'Site') {
         // Determine prefix based on which button was clicked
