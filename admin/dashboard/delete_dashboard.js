@@ -1,7 +1,7 @@
 // delete_dashboards.js
 document.addEventListener('DOMContentLoaded', () => {
     // Select the button with class 'delete-dash-button'
-    const button = document.querySelector('.delete-dash-button'); 
+    const button = document.getElementById('delete-dash-button'); 
 
     if (button) {
         button.addEventListener('click', function () {

@@ -1,7 +1,7 @@
 // delete_workspace.js
 document.addEventListener('DOMContentLoaded', () => {
     // Select the button with class 'delete-workspace-button'
-    const button = document.querySelector('.delete-workspace-button'); 
+    const button = document.getElementById('delete-workspace-button'); 
 
     if (button) {
         button.addEventListener('click', function () {
