@@ -73,34 +73,46 @@
     lastAIContent = null;
   });
 
-  // Opslaan naar Excel
-  document.getElementById('save_ai_response').addEventListener('click', async () => {
+// Opslaan naar Excel
+    document.getElementById('save_ai_response').addEventListener('click', async () => {
+    document.getElementById("save_ai_spinner").style.display = 'flex';
+
     try {
-    	document.getElementById("save_ai_spinner").style.display = 'flex';
-      if (!lastAIContent) throw new Error("Geen AI-data beschikbaar");
+        if (!lastAIContent) throw new Error("Geen AI-data beschikbaar");
 
-      // Parse LLM-output robuust
-      const parsed = normalizeAiJson(lastAIContent);
-      const payload = parsed;
+        // Parse LLM-output robuust
+        const parsed = normalizeAiJson(lastAIContent);
 
-      const res = await fetch("https://datatosharefunctions.azurewebsites.net/api/AddOpdrachtToExcel", {
+        // Lees de waarde uit het textarea-veld
+        const aiInput = document.getElementById("input_ai_field");
+        const aiInputRaw = aiInput ? aiInput.value : "";
+        // optioneel: trim + respecteer (extra) max lengte
+        const aiInputFinal = (aiInputRaw || "").trim().slice(0, 100000);
+
+        // Bouw payload:
+        const payload = {
+        ...parsed,
+        OpdrachtOmschrijving: aiInputFinal,
+        };
+
+        const res = await fetch("https://datatosharefunctions.azurewebsites.net/api/AddOpdrachtToExcel", {
         method: "POST",
         headers: { "Content-Type": "application/json; charset=utf-8" },
         body: JSON.stringify(payload)
-      });
+        });
 
-      if (!res.ok) {
+        if (!res.ok) {
         const errBody = await readMaybeJson(res);
         throw new Error(typeof errBody === 'string' ? errBody : JSON.stringify(errBody));
-      }
+        }
 
-      const result = await readMaybeJson(res);
-      document.getElementById("save_ai_spinner").style.display = 'none';
-      alert("✅ Data succesvol opgeslagen in Excel!");
+        const result = await readMaybeJson(res);
+        alert("✅ Data succesvol opgeslagen in Excel!");
     } catch (err) {
-      console.error(err);
-      const preview = typeof lastAIContent === 'string' ? ("\n\nVoorbeeld:\n" + lastAIContent.slice(0, 150) + "…") : "";
-      document.getElementById("save_ai_spinner").style.display = 'none';
-      alert("❌ Fout bij opslaan: " + err.message + preview);
+        console.error(err);
+        const preview = typeof lastAIContent === 'string' ? ("\n\nVoorbeeld:\n" + lastAIContent.slice(0, 150) + "…") : "";
+        alert("❌ Fout bij opslaan: " + err.message + preview);
+    } finally {
+        document.getElementById("save_ai_spinner").style.display = 'none';
     }
-  });
+});
