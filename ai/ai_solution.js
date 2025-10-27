@@ -92,7 +92,7 @@
         // Bouw payload:
         const payload = {
         ...parsed,
-        OpdrachtOmschrijving: aiInputFinal,
+        opdracht_omschrijving: aiInputFinal,
         };
 
         const res = await fetch("https://datatosharefunctions.azurewebsites.net/api/AddOpdrachtToExcel", {
